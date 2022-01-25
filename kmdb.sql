@@ -93,3 +93,77 @@
 
 -- The SQL statement for the cast output
 -- TODO!
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS characters;
+DROP TABLE IF EXISTS top_cast;
+
+CREATE TABLE movies (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT,
+  year_released INTEGER,
+  mpaa_rating TEXT,
+  director TEXT
+);
+
+CREATE TABLE characters (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  first_name TEXT,
+  last_name TEXT,
+  movie_id INTEGER
+);
+
+CREATE TABLE top_cast (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  first_name TEXT,
+  last_name TEXT,
+  character_id INTEGER
+);
+
+insert into movies (title, year_released, mpaa_rating, director)
+values
+    ('Batman Begins', '2005', 'PG-13', 'Christopher Nolan'),
+    ('Batman Begins', '2008', 'PG-13', 'Christopher Nolan'),
+    ('Batman Begins', '2012', 'PG-13', 'Christopher Nolan');
+
+insert into characters (first_name, last_name, ???)
+values
+    ('Bruce', 'Wayne', ? ),
+    ('Alfred', '', ? ),
+    ('Ras A', 'Ghul', ? ),
+    ('Rachel', 'Dawes', ? ),
+    ('Commissioner', 'Gordon', ? ),
+    ('Bruce', 'Wayne', ? ),
+    ('Joker', '', ? ),
+    ('Harvey', 'Dent', ? ),
+    ('Alfred', '', ? ),
+    ('Rachel', 'Dawes', ? ),
+    ('Christian', 'Bale', ? ),
+    ('Commissioner', 'Gordon', ? ),
+    ('Bane', '', ? ),
+    ('John', 'Blake', ? ),
+    ('Selina', 'Kyle', ? ); 
+
+insert into top_cast (first_name, last_name, ???)
+values
+    ('Christian Bale', 'Wayne', ? ),
+    ('Michael', 'Caine', ? ),
+    ('Liam', 'Neeson', ? ),
+    ('Katie', 'Holmes', ? ),
+    ('Gary', 'Oldman', ? ),
+    ('Christian', 'Bale', ? ),
+    ('Heath', 'Ledger', ? ),
+    ('Aaron', 'Eckhart', ? ),
+    ('Michael', 'Caine', ? ),
+    ('Maggie', 'Gyllenhaal', ? ),
+    ('Christian', 'Bale', ? ),
+    ('Gary', 'Oldman', ? ),
+    ('Tom', 'Hardy', ? ),
+    ('Joseph', 'Gordon-Levitt', ? ),
+    ('Anne', 'Hathaway', ? ); 
+
+    
