@@ -71,6 +71,7 @@
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS characters;
 DROP TABLE IF EXISTS top_cast;
+
 -- Create new tables, according to your domain model
 -- TODO!
 CREATE TABLE movies (
@@ -94,6 +95,7 @@ CREATE TABLE top_cast (
   last_name TEXT,
   character_id INTEGER
 );
+
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
@@ -162,7 +164,6 @@ from movies inner join top_cast on movies.director_id = top_cast.id;
 .print "Top Cast"
 .print "========"
 .print ""
-
 
 -- The SQL statement for the cast output
 -- TODO!
