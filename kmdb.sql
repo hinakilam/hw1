@@ -68,37 +68,11 @@
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
-
--- Create new tables, according to your domain model
--- TODO!
-
--- Insert data into your database that reflects the sample data shown above
--- Use hard-coded foreign key IDs when necessary
--- TODO!
-
--- Prints a header for the movies output
-.print "Movies"
-.print "======"
-.print ""
-
--- The SQL statement for the movies output
--- TODO!
-
--- Prints a header for the cast output
-.print ""
-.print "Top Cast"
-.print "========"
-.print ""
-
-
--- The SQL statement for the cast output
--- TODO!
-
-
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS characters;
 DROP TABLE IF EXISTS top_cast;
-
+-- Create new tables, according to your domain model
+-- TODO!
 CREATE TABLE movies (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT,
@@ -120,47 +94,77 @@ CREATE TABLE top_cast (
   last_name TEXT,
   character_id INTEGER
 );
-
+-- Insert data into your database that reflects the sample data shown above
+-- Use hard-coded foreign key IDs when necessary
+-- TODO!
 insert into movies (title, year_released, mpaa_rating, director)
 values
-    ('Batman Begins', '2005', 'PG-13', 'Christopher Nolan'),
-    ('The Dark Knight', '2008', 'PG-13', 'Christopher Nolan'),
-    ('The Dark Knight Rises', '2012', 'PG-13', 'Christopher Nolan');
+    ('Batman Begins', 2005, 'PG-13', 'Christopher Nolan'),
+    ('The Dark Knight', 2008, 'PG-13', 'Christopher Nolan'),
+    ('The Dark Knight Rises', 2012, 'PG-13', 'Christopher Nolan');
 
 insert into characters (first_name, last_name, movie_id)
 values
-    ('Bruce', 'Wayne', '1'),
-    ('Alfred', '', '1'),
-    ('Ras A', 'Ghul', '1'),
-    ('Rachel', 'Dawes', '1'),
-    ('Commissioner', 'Gordon', '1'),
-    ('Bruce', 'Wayne', '2'),
-    ('Joker', '', '2'),
-    ('Harvey', 'Dent', '2'),
-    ('Alfred', '', '2'),
-    ('Rachel', 'Dawes', '2'),
-    ('Bruce', 'Wayne', '3'),
-    ('Commissioner', 'Gordon', '3'),
-    ('Bane', '', '3'),
-    ('John', 'Blake', '3'),
-    ('Selina', 'Kyle', '3'); 
+    ('Bruce', 'Wayne', 1),
+    ('Alfred', '', 1),
+    ('Ras A', 'Ghul', 1),
+    ('Rachel', 'Dawes', 1),
+    ('Commissioner', 'Gordon', 1),
+    ('Bruce', 'Wayne', 2),
+    ('Joker', '', 2),
+    ('Harvey', 'Dent', 2),
+    ('Alfred', '', 2),
+    ('Rachel', 'Dawes', 2),
+    ('Bruce', 'Wayne', 3),
+    ('Commissioner', 'Gordon', 3),
+    ('Bane', '', 3),
+    ('John', 'Blake', 3),
+    ('Selina', 'Kyle', 3); 
 
 insert into top_cast (first_name, last_name, character_id)
 values
-    ('Christian Bale', 'Wayne', '1'),
-    ('Michael', 'Caine', '1'),
-    ('Liam', 'Neeson', '1'),
-    ('Katie', 'Holmes', '1'),
-    ('Gary', 'Oldman', '1'),
-    ('Christian', 'Bale', '2'),
-    ('Heath', 'Ledger', '2'),
-    ('Aaron', 'Eckhart', '2'),
-    ('Michael', 'Caine', '2'),
-    ('Maggie', 'Gyllenhaal', '2'),
-    ('Christian', 'Bale', '3'),
-    ('Gary', 'Oldman', '3'),
-    ('Tom', 'Hardy', '3'),
-    ('Joseph', 'Gordon-Levitt', '3'),
-    ('Anne', 'Hathaway', '3'); 
+    ('Christian', 'Bale', 1),
+    ('Michael', 'Caine', 1),
+    ('Liam', 'Neeson', 1),
+    ('Katie', 'Holmes', 1),
+    ('Gary', 'Oldman', 1),
+    ('Christian', 'Bale', 2),
+    ('Heath', 'Ledger', 2),
+    ('Aaron', 'Eckhart', 2),
+    ('Michael', 'Caine', 2),
+    ('Maggie', 'Gyllenhaal', 2),
+    ('Christian', 'Bale', 3),
+    ('Gary', 'Oldman', 3),
+    ('Tom', 'Hardy', 3),
+    ('Joseph', 'Gordon-Levitt', 3),
+    ('Anne', 'Hathaway', 3); 
+
+-- Prints a header for the movies output
+.print "Movies"
+.print "======"
+.print ""
+
+-- The SQL statement for the movies output
+-- TODO!
+
+select title, year_released, mpaa_rating, director 
+from movies;
+
+-- Prints a header for the cast output
+.print ""
+.print "Top Cast"
+.print "========"
+.print ""
+
+
+-- The SQL statement for the cast output
+-- TODO!
+
+select movies.title, top_cast.first_name, top_cast.last_name from movies inner join characters on movies.id = characters.movie_id;
+
+
+
+
+
 
     
