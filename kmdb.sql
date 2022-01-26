@@ -78,7 +78,7 @@ CREATE TABLE movies (
   title TEXT,
   year_released INTEGER,
   mpaa_rating TEXT,
-  director TEXT
+  director_id INTEGER
 );
 
 CREATE TABLE characters (
@@ -97,11 +97,16 @@ CREATE TABLE top_cast (
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
-insert into movies (title, year_released, mpaa_rating, director)
+
+insert into top_cast (first_name, last_name)
 values
-    ('Batman Begins', 2005, 'PG-13', 'Christopher Nolan'),
-    ('The Dark Knight', 2008, 'PG-13', 'Christopher Nolan'),
-    ('The Dark Knight Rises', 2012, 'PG-13', 'Christopher Nolan');
+('Christopher', 'Nolan'); -- id 1 
+
+insert into movies (title, year_released, mpaa_rating, director_id)
+values
+    ('Batman Begins', 2005, 'PG-13', 1),
+    ('The Dark Knight', 2008, 'PG-13', 1),
+    ('The Dark Knight Rises', 2012, 'PG-13', 1);
 
 insert into characters (first_name, last_name, movie_id)
 values
@@ -124,20 +129,22 @@ values
 insert into top_cast (first_name, last_name, character_id)
 values
     ('Christian', 'Bale', 1),
-    ('Michael', 'Caine', 1),
-    ('Liam', 'Neeson', 1),
-    ('Katie', 'Holmes', 1),
-    ('Gary', 'Oldman', 1),
-    ('Christian', 'Bale', 2),
-    ('Heath', 'Ledger', 2),
-    ('Aaron', 'Eckhart', 2),
     ('Michael', 'Caine', 2),
-    ('Maggie', 'Gyllenhaal', 2),
-    ('Christian', 'Bale', 3),
-    ('Gary', 'Oldman', 3),
-    ('Tom', 'Hardy', 3),
-    ('Joseph', 'Gordon-Levitt', 3),
-    ('Anne', 'Hathaway', 3); 
+    ('Liam', 'Neeson', 3),
+    ('Katie', 'Holmes', 4),
+    ('Gary', 'Oldman', 5),
+    ('Christian', 'Bale', 6),
+    ('Heath', 'Ledger', 7),
+    ('Aaron', 'Eckhart', 8),
+    ('Michael', 'Caine', 9),
+    ('Maggie', 'Gyllenhaal', 10),
+    ('Christian', 'Bale', 11),
+    ('Gary', 'Oldman', 12),
+    ('Tom', 'Hardy', 13),
+    ('Joseph', 'Gordon-Levitt', 14),
+    ('Anne', 'Hathaway', 15);
+
+
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -147,8 +154,8 @@ values
 -- The SQL statement for the movies output
 -- TODO!
 
-select title, year_released, mpaa_rating, director 
-from movies;
+select title, year_released, mpaa_rating, top_cast.first_name, top_cast.last_name
+from movies inner join top_cast on movies.director_id = top_cast.id;
 
 -- Prints a header for the cast output
 .print ""
@@ -160,8 +167,9 @@ from movies;
 -- The SQL statement for the cast output
 -- TODO!
 
-select movies.title, top_cast.first_name, top_cast.last_name from movies inner join characters on movies.id = characters.movie_id;
-
+select movies.title, top_cast.first_name, top_cast.last_name, characters.first_name, characters.last_name from movies 
+inner join characters on characters.movie_id = movies.id 
+inner join top_cast on top_cast.character_id = characters.id;
 
 
 
